@@ -26,7 +26,7 @@ public class BaiDu_StepDefinitions {
     
     @Given("^I open baidu website and validate the title$")
     public void i_open_website() throws Throwable {
-        driver.get("http://www.baidu.com");
+        //driver.get("http://www.baidu.com");
         assertEquals(driver.getTitle(), "百度一下，你就知道");
     }
 

@@ -7,7 +7,7 @@ formatter.feature({
   "keyword": "Feature"
 });
 formatter.before({
-  "duration": 1959999446,
+  "duration": 3742854535,
   "status": "passed"
 });
 formatter.scenario({
@@ -37,7 +37,7 @@ formatter.match({
   "location": "BaiDu_StepDefinitions.i_open_website()"
 });
 formatter.result({
-  "duration": 784072160,
+  "duration": 117940933,
   "status": "passed"
 });
 formatter.match({
@@ -50,18 +50,18 @@ formatter.match({
   "location": "BaiDu_StepDefinitions.i_input_keyword_and_search(String)"
 });
 formatter.result({
-  "duration": 327040798,
+  "duration": 321279967,
   "status": "passed"
 });
 formatter.match({
   "location": "BaiDu_StepDefinitions.the_search_result_page_displayed()"
 });
 formatter.result({
-  "duration": 21196,
+  "duration": 23664,
   "status": "passed"
 });
 formatter.after({
-  "duration": 89100,
+  "duration": 89413,
   "status": "passed"
 });
 });

@@ -8,8 +8,13 @@ import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebDriverException;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.ie.InternetExplorerDriver;
+import org.openqa.selenium.remote.DesiredCapabilities;
 
 import java.net.MalformedURLException;
+import java.util.concurrent.TimeUnit;
+
 
 
 /**
@@ -18,20 +23,56 @@ import java.net.MalformedURLException;
 public class Hooks{
     public static WebDriver driver;
 
+    public static String browser = "chrome";
+    public static String URL = "http://www.baidu.com";
     
     @Before
     /**
-     * Delete all cookies at the start of each scenario to avoid
-     * shared state between tests
+     * Open browser
      */
     public void openBrowser() throws MalformedURLException {
-    	System.out.println("Called openBrowser");
-    	driver = new ChromeDriver();
-    	driver.manage().deleteAllCookies();
-    	driver.manage().window().maximize();
+        if (browser.equalsIgnoreCase("chrome")) {
+            // open chrome browser
+            System.out.println("start chrome browser...");
+            System.setProperty("webdriver.chrome.driver","./chromedriver"); //Set chromedriver path
+            driver = new ChromeDriver();
+            driver.manage().deleteAllCookies();
+            driver.get(URL);
+            driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+            driver.manage().window().maximize();
+        }
+
+        else if(browser.equalsIgnoreCase("firefox")){
+            // open chrome browser
+
+            System.out.println(" start FireFox driver");
+            System.setProperty("webdriver.firefox.bin", "/Applications/Firefox.app/Contents/MacOS/firefox-bin"); //Set firefox path
+
+            WebDriver driver = new FirefoxDriver();
+            //driver = new FirefoxDriver();
+            driver.get(URL);
+            driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+            driver.manage().window().maximize();
+        }
+
+        else if(browser.equalsIgnoreCase("ie")){
+
+            System.setProperty("webdriver.ie.driver", "files/IEDriverServer64.exe"); //Set IEDriver 路径
+
+            DesiredCapabilities capabilities = DesiredCapabilities.internetExplorer();
+            capabilities.setCapability(InternetExplorerDriver.INTRODUCE_FLAKINESS_BY_IGNORING_SECURITY_DOMAINS, true); //IE默认启动保护模式，要么手动在浏览器的设置中关闭保护模式，要么在代码中加上这一句
+            capabilities.setCapability("ignoreProtectedModeSettings",true);
+            driver = new InternetExplorerDriver(capabilities);
+        }
+
+        else
+        {
+            throw new IllegalArgumentException("The Browser Type is Undefined");
+        }
+
     }
 
-     
+
     @After
     /**
      * Embed a screenshot in test report if test is marked as failed
