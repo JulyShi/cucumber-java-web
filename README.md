@@ -1,6 +1,6 @@
-#cucumber-java-web
+cucumber-java-web
 
-####Framework: Selenium+Java+Cucumber+Maven+TestNg
+###Framework: Selenium+Java+Cucumber+Maven+TestNg
 
 ##### 该Project为Mac版本，Windows使用需要替换相应的ChromeDriver
 ##### 1. Install JDK，Set JAVA_HOME
@@ -10,4 +10,4 @@
 #####  5. Change the 'chromedriver' to match your chrome version
 #####  6. mvn clean
 #####  7. mvn install
-#####  7. mvn test -Dcucumber.options="--tags @test1" （执行tag为test1的scenerio）
+#####  8. mvn test -Dcucumber.options="--tags @test1" （执行tag为test1的scenerio）
