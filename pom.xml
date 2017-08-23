@@ -23,7 +23,13 @@
 		<dependency>
 			<groupId>info.cukes</groupId>
 			<artifactId>cucumber-testng</artifactId>
-			<version>1.2.0</version>
+			<version>1.2.5</version>
+		</dependency>
+		<dependency>
+			<groupId>org.testng</groupId>
+			<artifactId>testng</artifactId>
+			<version>6.11</version>
+			<scope>test</scope>
 		</dependency>
 		<dependency>
 			<groupId>info.cukes</groupId>

@@ -1,67 +1,89 @@
-$(document).ready(function() {var formatter = new CucumberHTML.DOMFormatter($('.cucumber-report'));formatter.uri("features/test.feature");
+$(document).ready(function() {var formatter = new CucumberHTML.DOMFormatter($('.cucumber-report'));formatter.uri("features/qunar_test.feature");
 formatter.feature({
   "line": 1,
-  "name": "Search in Baidu website",
+  "name": "Search in qunar website",
   "description": "",
-  "id": "search-in-baidu-website",
+  "id": "search-in-qunar-website",
   "keyword": "Feature"
 });
 formatter.before({
-  "duration": 3742854535,
+  "duration": 10012159378,
   "status": "passed"
 });
 formatter.scenario({
-  "line": 3,
-  "name": "Search in Baidu website",
-  "description": "",
-  "id": "search-in-baidu-website;search-in-baidu-website",
-  "type": "scenario",
-  "keyword": "Scenario"
-});
-formatter.step({
   "line": 4,
-  "name": "I open baidu website and validate the title",
-  "keyword": "Given "
+  "name": "Search in qunar website",
+  "description": "",
+  "id": "search-in-qunar-website;search-in-qunar-website",
+  "type": "scenario",
+  "keyword": "Scenario",
+  "tags": [
+    {
+      "line": 3,
+      "name": "@bvt"
+    },
+    {
+      "line": 3,
+      "name": "@test1"
+    }
+  ]
 });
 formatter.step({
   "line": 5,
-  "name": "I input \"Selenium\" and search",
-  "keyword": "When "
+  "name": "I open qunar website and validate the title",
+  "keyword": "Given "
 });
 formatter.step({
   "line": 6,
+  "name": "I click \"自由行\"",
+  "keyword": "When "
+});
+formatter.step({
+  "line": 7,
+  "name": "I input the Free Trip search page",
+  "keyword": "And "
+});
+formatter.step({
+  "line": 8,
   "name": "the search result displayed",
   "keyword": "Then "
 });
 formatter.match({
-  "location": "BaiDu_StepDefinitions.i_open_website()"
+  "location": "Qunar_StepDefinition.i_open_the_qunar_home_page()"
 });
 formatter.result({
-  "duration": 117940933,
+  "duration": 90198705,
   "status": "passed"
 });
 formatter.match({
   "arguments": [
     {
-      "val": "Selenium",
+      "val": "自由行",
       "offset": 9
     }
   ],
-  "location": "BaiDu_StepDefinitions.i_input_keyword_and_search(String)"
+  "location": "Qunar_StepDefinition.i_click_button(String)"
 });
 formatter.result({
-  "duration": 321279967,
+  "duration": 131891127,
   "status": "passed"
 });
 formatter.match({
-  "location": "BaiDu_StepDefinitions.the_search_result_page_displayed()"
+  "location": "Qunar_StepDefinition.i_input_FreeTrip_search_page()"
 });
 formatter.result({
-  "duration": 23664,
+  "duration": 6965434585,
+  "status": "passed"
+});
+formatter.match({
+  "location": "Qunar_StepDefinition.the_search_result_page_dispalyed()"
+});
+formatter.result({
+  "duration": 6730025,
   "status": "passed"
 });
 formatter.after({
-  "duration": 89413,
+  "duration": 171213,
   "status": "passed"
 });
 });

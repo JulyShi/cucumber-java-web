@@ -14,7 +14,9 @@ import org.openqa.selenium.remote.DesiredCapabilities;
 
 import java.net.MalformedURLException;
 import java.util.concurrent.TimeUnit;
+import java.util.logging.Logger;
 
+import static pageobjects.BaseClass.screenshot;
 
 
 /**
@@ -24,8 +26,11 @@ public class Hooks{
     public static WebDriver driver;
 
     public static String browser = "chrome";
-    public static String URL = "http://www.baidu.com";
-    
+    //public static String URL = "http://www.baidu.com";
+    public static String URL2 = "https://www.qunar.com/";
+
+    public static Logger logger = Logger.getLogger("console");
+
     @Before
     /**
      * Open browser
@@ -37,20 +42,22 @@ public class Hooks{
             System.setProperty("webdriver.chrome.driver","./chromedriver"); //Set chromedriver path
             driver = new ChromeDriver();
             driver.manage().deleteAllCookies();
-            driver.get(URL);
+            driver.get(URL2);
+            screenshot(driver); // First snapshot
             driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
             driver.manage().window().maximize();
+            screenshot(driver); // Second snapshot
+            logger.info("This is info message: Open broswer successfully");
         }
 
         else if(browser.equalsIgnoreCase("firefox")){
             // open chrome browser
 
             System.out.println(" start FireFox driver");
-            System.setProperty("webdriver.firefox.bin", "/Applications/Firefox.app/Contents/MacOS/firefox-bin"); //Set firefox path
-
+            System.setProperty("webdriver.firefox.bin", "/Applications/Firefox.app/Contents/MacOS/firefox-bin");
             WebDriver driver = new FirefoxDriver();
             //driver = new FirefoxDriver();
-            driver.get(URL);
+            driver.get(URL2);
             driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
             driver.manage().window().maximize();
         }
@@ -58,7 +65,6 @@ public class Hooks{
         else if(browser.equalsIgnoreCase("ie")){
 
             System.setProperty("webdriver.ie.driver", "files/IEDriverServer64.exe"); //Set IEDriver 路径
-
             DesiredCapabilities capabilities = DesiredCapabilities.internetExplorer();
             capabilities.setCapability(InternetExplorerDriver.INTRODUCE_FLAKINESS_BY_IGNORING_SECURITY_DOMAINS, true); //IE默认启动保护模式，要么手动在浏览器的设置中关闭保护模式，要么在代码中加上这一句
             capabilities.setCapability("ignoreProtectedModeSettings",true);
@@ -82,9 +88,8 @@ public class Hooks{
         if(scenario.isFailed()) {
         try {
         	 scenario.write("Current Page URL is " + driver.getCurrentUrl());
-            //byte[] screenshot = getScreenshotAs(OutputType.BYTES);
-            byte[] screenshot = ((TakesScreenshot)driver).getScreenshotAs(OutputType.BYTES);
-            scenario.embed(screenshot, "image/png");
+             byte[] screenshot = ((TakesScreenshot)driver).getScreenshotAs(OutputType.BYTES);
+             scenario.embed(screenshot, "./target/screenshots/image/png");
         } catch (WebDriverException somePlatformsDontSupportScreenshots) {
             System.err.println(somePlatformsDontSupportScreenshots.getMessage());
         }
@@ -93,5 +98,6 @@ public class Hooks{
         //driver.quit();
         
     }
-    
+
+
 }

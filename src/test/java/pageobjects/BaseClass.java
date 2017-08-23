@@ -1,10 +1,11 @@
 package pageobjects;
 
-import org.openqa.selenium.NoSuchElementException;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
-import helpers.Log;
+import org.apache.commons.io.FileUtils;
+import org.openqa.selenium.*;
+import step_definitions.Hooks;
 
+import java.io.File;
+import java.io.IOException;
 import java.util.ArrayList;
 
 
@@ -35,8 +36,21 @@ public abstract class BaseClass {
 		ArrayList<String> tabs = new ArrayList<String>(driver.getWindowHandles());
 		driver.switchTo().window(tabs.get(1));
 		Thread.sleep(1000);
-		Log.Log.info("Switch to the new tab");
+		Hooks.logger.info("Switch to the new tab");
 
 	}
 
+	// Screenshot
+	public static void screenshot(WebDriver driver){
+		String screenpath = "./target/screenshots/";
+		try {
+			TakesScreenshot scrShot = ((TakesScreenshot)driver);
+			File SrcFile = scrShot.getScreenshotAs(OutputType.FILE);
+			File DestFile = new File(screenpath + System.currentTimeMillis() + ".png");
+			FileUtils.copyFile(SrcFile,DestFile);
+		}catch (IOException e) {
+			e.printStackTrace();
+		}
+		Hooks.logger.info("Snapshot done");
+	}
 }

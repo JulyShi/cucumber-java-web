@@ -1,7 +1,7 @@
 /Users/xyShi/QAWorkshop/cucumber-java-web/src/test/java/helpers/DataHelper.java
 /Users/xyShi/QAWorkshop/cucumber-java-web/src/test/java/step_definitions/Hooks.java
 /Users/xyShi/QAWorkshop/cucumber-java-web/src/test/java/helpers/Log.java
-/Users/xyShi/QAWorkshop/cucumber-java-web/src/test/java/step_definitions/BaiDu_StepDefinitions.java
-/Users/xyShi/QAWorkshop/cucumber-java-web/src/test/java/pageobjects/BaiDuHomePage.java
 /Users/xyShi/QAWorkshop/cucumber-java-web/src/test/java/pageobjects/BaseClass.java
+/Users/xyShi/QAWorkshop/cucumber-java-web/src/test/java/pageobjects/QunarHomePage.java
+/Users/xyShi/QAWorkshop/cucumber-java-web/src/test/java/step_definitions/Qunar_StepDefinition.java
 /Users/xyShi/QAWorkshop/cucumber-java-web/src/test/java/step_definitions/RunCukesTest.java
